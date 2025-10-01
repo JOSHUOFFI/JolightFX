@@ -147,5 +147,192 @@
   </script>
 </div>
 
+<!-- ===== Live Forex Dashboard Section ===== -->
+<section id="live-market-dashboard">
+  <div class="dashboard-container">
+    
+    <!-- Section Heading -->
+    <h2 class="dashboard-title">📊 Live Forex Market Dashboard</h2>
+    <p class="dashboard-subtitle">
+      Track real-time forex prices, charts, and market insights directly from TradingView.
+    </p>
+
+    <!-- ===== 1. Ticker Tape ===== -->
+    <div class="dashboard-card">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "OANDA:EURUSD", "title": "EUR/USD" },
+            { "proName": "OANDA:GBPUSD", "title": "GBP/USD" },
+            { "proName": "OANDA:USDJPY", "title": "USD/JPY" },
+            { "proName": "OANDA:USDCAD", "title": "USD/CAD" },
+            { "proName": "OANDA:USDCHF", "title": "USD/CHF" },
+            { "proName": "OANDA:AUDUSD", "title": "AUD/USD" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "light",
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <!-- ===== 2. Main Chart ===== -->
+    <div class="dashboard-card">
+      <h3 class="dashboard-subheading">Live Interactive Chart</h3>
+      <div class="tradingview-widget-container chart-box">
+        <div id="tradingview_chart"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+          new TradingView.widget({
+            "container_id": "tradingview_chart",
+            "autosize": true,
+            "symbol": "OANDA:EURUSD",
+            "interval": "60",
+            "timezone": "Etc/UTC",
+            "theme": "light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "hide_legend": false,
+            "allow_symbol_change": true,
+            "calendar": true,
+            "studies": ["MACD@tv-basicstudies", "RSI@tv-basicstudies"]
+          });
+        </script>
+      </div>
+    </div>
+
+    <!-- ===== 3. Market Overview ===== -->
+    <div class="dashboard-card">
+      <h3 class="dashboard-subheading">Market Overview</h3>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "en",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "tabs": [
+            {
+              "title": "Forex",
+              "symbols": [
+                { "s": "OANDA:EURUSD", "d": "EUR/USD" },
+                { "s": "OANDA:GBPUSD", "d": "GBP/USD" },
+                { "s": "OANDA:USDJPY", "d": "USD/JPY" },
+                { "s": "OANDA:USDCHF", "d": "USD/CHF" },
+                { "s": "OANDA:USDCAD", "d": "USD/CAD" },
+                { "s": "OANDA:AUDUSD", "d": "AUD/USD" }
+              ]
+            },
+            {
+              "title": "Indices",
+              "symbols": [
+                { "s": "OANDA:SPX500USD", "d": "S&P 500" },
+                { "s": "OANDA:NAS100USD", "d": "NASDAQ 100" },
+                { "s": "OANDA:DE30EUR", "d": "DAX 40" }
+              ]
+            },
+            {
+              "title": "Commodities",
+              "symbols": [
+                { "s": "OANDA:XAUUSD", "d": "Gold" },
+                { "s": "OANDA:XAGUSD", "d": "Silver" },
+                { "s": "OANDA:WTICOUSD", "d": "Crude Oil" }
+              ]
+            }
+          ]
+        }
+        </script>
+      </div>
+    </div>
+
+    <!-- ===== 4. Economic Calendar ===== -->
+    <div class="dashboard-card">
+      <h3 class="dashboard-subheading">Economic Calendar</h3>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+        {
+          "colorTheme": "light",
+          "isTransparent": false,
+          "width": "100%",
+          "height": "600",
+          "locale": "en",
+          "importanceFilter": "-1,0,1"
+        }
+        </script>
+      </div>
+    </div>
+
+    <!-- ===== 5. Heatmap ===== -->
+    <div class="dashboard-card">
+      <h3 class="dashboard-subheading">Currency Heatmap</h3>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+        {
+          "width": "100%",
+          "height": "600",
+          "currencies": ["EUR", "USD", "JPY", "GBP", "CHF", "AUD", "CAD"],
+          "isTransparent": false,
+          "colorTheme": "light",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CSS Styling ===== -->
+<style>
+#live-market-dashboard {
+  background: #f8f9fa;
+  padding: 60px 20px;
+}
+.dashboard-container {
+  max-width: 1300px;
+  margin: auto;
+}
+.dashboard-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #111;
+}
+.dashboard-subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+.dashboard-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 40px;
+}
+.dashboard-subheading {
+  text-align: center;
+  color: #222;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.chart-box {
+  height: 500px;
+}
+</style>
+
 
 
